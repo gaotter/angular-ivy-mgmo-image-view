@@ -21,19 +21,19 @@ export class ImageViewComponent implements OnInit {
   }
 
   downLoadImage(uri: string) {
-    var HTTPOptions = {
+    const HTTPOptions = {
       headers: new HttpHeaders({
         Accept: 'image/*',
       }),
       responseType: 'blob' as 'json',
     };
 
-    var request = this.http.get(uri, HTTPOptions);
+    const request = this.http.get(uri, HTTPOptions);
 
     request.subscribe((d: any) => {
-      let objUrl = URL.createObjectURL(d);
+      const objUrl = URL.createObjectURL(d);
 
-      var safeUrl: SafeResourceUrl =
+      const safeUrl: SafeResourceUrl =
         this.sanitization.bypassSecurityTrustResourceUrl(objUrl);
       this.safeImageSrc = safeUrl;
     });
